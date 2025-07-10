@@ -21,10 +21,10 @@ export default function Home() {
         </ol>
         <Image
           className={styles.three}
-          src="/images/image1.jpg"
+          src="/image1.jpg"
           alt="My Face"
-          width={180}
-          height={38}>
+          width={200}
+          height={200}>
          </Image>
 
         <div className={styles.ctas}>
