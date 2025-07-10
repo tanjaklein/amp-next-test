@@ -19,6 +19,13 @@ export default function Home() {
           </li>
           <li>Tanja ... Save and see your changes instantly.</li>
         </ol>
+        <Image
+          className={styles.three}
+          src="/images/image1.jpg"
+          alt="My Face"
+          width={180}
+          height={38}>
+         </Image>
 
         <div className={styles.ctas}>
           <a
