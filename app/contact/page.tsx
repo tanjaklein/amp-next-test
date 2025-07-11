@@ -1,9 +1,11 @@
-export function ContactPage () {
-    return (
-        <div className="contact-page">
-            <h1>Contact Page</h1>
-        </div>
-    )
+export  function Contact () {
+  return(
+    <>
+   <header>
+    Contact page
+   </header>
+   </>
+  )
 }
 
-export default ContactPage;
+export default Contact;

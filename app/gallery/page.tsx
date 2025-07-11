@@ -1,8 +1,10 @@
-export function Gallery () {
+export  function Gallery () {
   return(
-   <div>
+    <>
+   <header>
     Gallery page
-   </div>
+   </header>
+   </>
   )
 }
 

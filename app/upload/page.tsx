@@ -1,4 +1,6 @@
-export function Upload () {
+
+
+export default function Upload () {
   return(
    <div>
     Upload page
@@ -6,4 +8,3 @@ export function Upload () {
   )
 }
 
-export default Upload;
