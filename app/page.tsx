@@ -1,5 +1,5 @@
 import  Image from "next/image";
-import { Divider, Grid } from "@aws-amplify/ui-react";
+
 
 import styles from "./page.module.css";
 import mealIcon from '@/assets/icons/meal.png';
