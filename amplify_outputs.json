@@ -1,9 +1,9 @@
 {
   "auth": {
-    "user_pool_id": "eu-north-1_0f8NvkbVu",
-    "aws_region": "eu-north-1",
-    "user_pool_client_id": "6u7q0s86loroephnd9f2s3sn2v",
-    "identity_pool_id": "eu-north-1:9dd9a9c5-443a-4172-a5e8-53cbf931f8b6",
+    "user_pool_id": "us-east-1_VAjanUiH3",
+    "aws_region": "us-east-1",
+    "user_pool_client_id": "4qtpruaag92g04r1655h54blea",
+    "identity_pool_id": "us-east-1:c8e26e67-b601-437b-babb-488f8100fc9a",
     "mfa_methods": [],
     "standard_required_attributes": [
       "email"
@@ -14,6 +14,7 @@
     "user_verification_types": [
       "email"
     ],
+    "groups": [],
     "mfa_configuration": "NONE",
     "password_policy": {
       "min_length": 8,
@@ -25,57 +26,89 @@
     "unauthenticated_identities_enabled": true
   },
   "data": {
-    "url": "https://duyzri2flzbqjfc5ibvdeltjcy.appsync-api.eu-north-1.amazonaws.com/graphql",
-    "aws_region": "eu-north-1",
-    "api_key": "da2-bwqktxiwuzfxdlsqknjqn3uute",
-    "default_authorization_type": "API_KEY",
+    "url": "https://v6nb25lvgfdghh2hsxorf2chlu.appsync-api.us-east-1.amazonaws.com/graphql",
+    "aws_region": "us-east-1",
+    "default_authorization_type": "AWS_IAM",
     "authorization_types": [
-      "AMAZON_COGNITO_USER_POOLS",
-      "AWS_IAM"
+      "AMAZON_COGNITO_USER_POOLS"
     ],
     "model_introspection": {
       "version": 1,
       "models": {
-        "Todo": {
-          "name": "Todo",
+        "Artwork": {
+          "name": "Artwork",
           "fields": {
             "id": {
               "name": "id",
               "isArray": false,
-              "type": "ID",
+              "type": "String",
               "isRequired": true,
               "attributes": []
             },
-            "content": {
-              "name": "content",
+            "name": {
+              "name": "name",
               "isArray": false,
               "type": "String",
+              "isRequired": true,
+              "attributes": []
+            },
+            "image": {
+              "name": "image",
+              "isArray": false,
+              "type": "String",
+              "isRequired": false,
+              "attributes": []
+            },
+            "description": {
+              "name": "description",
+              "isArray": false,
+              "type": "String",
+              "isRequired": false,
+              "attributes": []
+            },
+            "price": {
+              "name": "price",
+              "isArray": false,
+              "type": "Int",
               "isRequired": false,
               "attributes": []
             },
             "createdAt": {
               "name": "createdAt",
               "isArray": false,
-              "type": "AWSDateTime",
+              "type": "AWSDate",
               "isRequired": false,
-              "attributes": [],
-              "isReadOnly": true
+              "attributes": []
             },
             "updatedAt": {
               "name": "updatedAt",
               "isArray": false,
-              "type": "AWSDateTime",
+              "type": "AWSDate",
               "isRequired": false,
-              "attributes": [],
-              "isReadOnly": true
+              "attributes": []
+            },
+            "isAvailable": {
+              "name": "isAvailable",
+              "isArray": false,
+              "type": "Boolean",
+              "isRequired": false,
+              "attributes": []
             }
           },
           "syncable": true,
-          "pluralName": "Todos",
+          "pluralName": "Artworks",
           "attributes": [
             {
               "type": "model",
               "properties": {}
+            },
+            {
+              "type": "key",
+              "properties": {
+                "fields": [
+                  "id"
+                ]
+              }
             },
             {
               "type": "auth",
@@ -83,7 +116,7 @@
                 "rules": [
                   {
                     "allow": "public",
-                    "provider": "apiKey",
+                    "provider": "iam",
                     "operations": [
                       "create",
                       "update",
@@ -106,5 +139,5 @@
       "nonModels": {}
     }
   },
-  "version": "1.3"
+  "version": "1.4"
 }

@@ -1,9 +1,9 @@
 export  function Contact () {
   return(
     <>
-   <header>
+   <div>
     Contact page
-   </header>
+   </div>
    </>
   )
 }

@@ -1,26 +1,35 @@
 "use client"
-import { generateClient } from "aws-amplify/data";
+import React from "react";
+import dynamic from "next/dynamic";
+import { generateClient } from "aws-amplify/api";
 import type { Schema } from "@/amplify/data/resource";
 import { Amplify } from "aws-amplify";
+import { useState, useEffect}  from "react";
+
 
 import outputs from "@/amplify_outputs.json"; // Import the Amplify outputs file
 
 Amplify.configure(outputs)
 
+
+const App = dynamic(() => import("../App"), {
+  ssr: false});
+
 const client = generateClient<Schema>() ;// use this Data client for CRUDL requests
 
-export async function getData() {
-   // Fetch records from the database and use them in your frontend component.
-   // (THIS SNIPPET WILL ONLY WORK IN THE FRONTEND CODE FILE.)
-   
-   // For example, in a React component, you can use this snippet in your
-   // function's RETURN statement
-   //
-const { data: arts } = await client.models.Artwork.list();
-   return <ul>{arts.map(todo => <li key={todo.id}>{todo.name}</li>)}</ul>;
-}
+
+ 
+
+
 
 export  function Gallery () {
+   const [todos, setTodos] = useState<Array<Schema["Artwork"]["type"]>>([]);
+
+   useEffect(() => {
+    client.models.Artwork.observeQuery().subscribe({
+      next: (data) => setTodos([...data.items]),
+    });
+  }, []);
    
   return(
     <>
@@ -29,7 +38,13 @@ export  function Gallery () {
    </header>
    <div>
      <p>Welcome to the Gallery page!</p>
-     <p>{getData()}</p>
+     <ul>
+        {todos.map((todo) => (
+          <li 
+                  key={todo.id}>{todo.name}</li>
+        ))}
+      </ul>
+    
      </div>
     
 
