@@ -7,7 +7,7 @@ import { Amplify } from "aws-amplify";
 import { useState, useEffect}  from "react";
 
 // Update the import path to match the actual file location and name
-import   ArtsGrid   from '../../components/artimage/art-grid';
+import   ArtsGrid   from "../../components/artimage/art-grid";
 
 
 import outputs from "@/amplify_outputs.json"; // Import the Amplify outputs file
