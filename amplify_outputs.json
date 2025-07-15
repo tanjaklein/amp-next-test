@@ -76,14 +76,14 @@
             "createdAt": {
               "name": "createdAt",
               "isArray": false,
-              "type": "AWSDate",
+              "type": "String",
               "isRequired": false,
               "attributes": []
             },
             "updatedAt": {
               "name": "updatedAt",
               "isArray": false,
-              "type": "AWSDate",
+              "type": "String",
               "isRequired": false,
               "attributes": []
             },

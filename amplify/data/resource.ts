@@ -14,8 +14,8 @@ const schema = a.schema({
        image: a.string(),
        description: a.string(),
        price: a.integer(),
-       createdAt: a.date(), // Default to current time
-       updatedAt: a.date(), // Default to current time
+       createdAt: a.string(), // Default to current time
+       updatedAt: a.string(), // Default to current time
        isAvailable: a.boolean().default(true), // New field added
  
      })
