@@ -15,9 +15,10 @@ const nextConfig = {
   
 };
 
-module.exports = nextConfig;
+//module.exports = nextConfig;
 //export default nextConfig;
-/*module.exports = {
+module.exports = {
+
   typescript: {
     // !! WARN !!
     // Dangerously allow production builds to successfully complete even if
@@ -26,4 +27,3 @@ module.exports = nextConfig;
     ignoreBuildErrors: true,
   },
 }
-*/
