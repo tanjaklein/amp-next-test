@@ -10,6 +10,7 @@ const schema = a.schema({
  Artwork: a
      .model({
        id : a.string().required(), // Unique identifier for each artwork
+       slug: a.string().required(), // Slug for URL-friendly identification
        name: a.string().required(),
        image: a.string(),
        description: a.string(),

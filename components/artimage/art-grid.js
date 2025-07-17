@@ -6,7 +6,7 @@ export default function ArtsGrid({ arts }) {
   return (
     <ul className={classes.arts}>
       {arts.map((art) => (
-        <li key={art.id}>
+        <li key={art.slug}>
           <ArtItem {...art} />
         </li>
       ))}

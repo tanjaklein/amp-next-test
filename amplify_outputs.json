@@ -45,6 +45,13 @@
               "isRequired": true,
               "attributes": []
             },
+            "slug": {
+              "name": "slug",
+              "isArray": false,
+              "type": "String",
+              "isRequired": true,
+              "attributes": []
+            },
             "name": {
               "name": "name",
               "isArray": false,
@@ -138,6 +145,45 @@
       "enums": {},
       "nonModels": {}
     }
+  },
+  "storage": {
+    "aws_region": "us-east-1",
+    "bucket_name": "amplify-ampnexttest-tanja-allisonartimages1234567b-ivpkl7cgyzvc",
+    "buckets": [
+      {
+        "name": "allisonartimages1234567",
+        "bucket_name": "amplify-ampnexttest-tanja-allisonartimages1234567b-ivpkl7cgyzvc",
+        "aws_region": "us-east-1",
+        "paths": {
+          "profile-pictures/*": {
+            "guest": [
+              "get",
+              "list"
+            ]
+          },
+          "profile-pictures/${cognito-identity.amazonaws.com:sub}/*": {
+            "entityidentity": [
+              "get",
+              "list",
+              "write",
+              "delete"
+            ]
+          },
+          "picture-submissions/*": {
+            "authenticated": [
+              "get",
+              "list",
+              "write"
+            ],
+            "guest": [
+              "get",
+              "list",
+              "write"
+            ]
+          }
+        }
+      }
+    ]
   },
   "version": "1.4"
 }

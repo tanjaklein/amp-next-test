@@ -28,9 +28,15 @@ const client = generateClient<Schema>() ;// use this Data client for CRUDL reque
 export  function Gallery () {
    const [arts, setArts] = useState<Array<Schema["Artwork"]["type"]>>([]);
 
-   useEffect(() => {
+  /* useEffect(() => {
     client.models.Artwork.observeQuery().subscribe({
       next: (data) => setArts([...data.items]),
+    });
+  }, []);*/
+
+  useEffect(() => {
+    client.models.Artwork.list().then((data) => {
+      setArts(data.data);
     });
   }, []);
    

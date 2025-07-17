@@ -1,10 +1,92 @@
+'use client';
+
+import type { Schema } from "../../amplify/data/resource";
+import { generateClient } from "aws-amplify/data";
+import classes from './page.module.css';
+import ImagePicker from '@/components/artimage/image-picker';
+import MealsFormSubmit from '@/components/artimage/meals-form-submit';
+import { saveMeal } from '@/lib/meals';
+import { shareMeal} from '@/lib/actions';
+import { useActionState } from "react";
+
+import { Amplify } from "aws-amplify";
+
+import outputs from "@/amplify_outputs.json"; // Import the Amplify outputs file
+
+Amplify.configure(outputs)
 
 
-export default function Upload () {
+
+  /*async function createArt(event) {
+    event.preventDefault();
+    const form = new FormData(event.target);
+    console.log(form.get("image").name);
+
+    const { data: newNote } = await client.models.Note.create({
+      name: form.get("name"),
+      description: form.get("description"),
+      image: form.get("image").name,
+    });
+
+    console.log(newNote);
+    if (newNote.image)
+      if (newNote.image)
+        await uploadData({
+          path: ({ identityId }) => `media/${identityId}/${newNote.image}`,
+
+          data: form.get("image"),
+        }).result;
+
+  //  fetchNotes();
+    event.target.reset();
+  }
+    */
+
+
+
+export  function LoadPage () {
+   const [state, formAction] = useActionState(shareMeal, { message: 'Meal shared successfully!' });
+
+   console.log('LoadPage state:', state);
+   
+
   return(
-   <div>
-    Upload page
-   </div>
-  )
+    <>
+   <header className={classes.header}>
+        <h1>
+          Share your <span className={classes.highlight}>favorite meal</span>
+        </h1>
+        <p>Or any other meal you feel needs sharing!</p>
+      </header>
+      <main className={classes.main}>
+        <form className={classes.form} action={formAction}>
+          <div className={classes.row}>
+            <p>
+              <label htmlFor="name">Name</label>
+              <input type="text" id="name" name="name"  />
+            </p>
+            <p>
+              <label htmlFor="description">Description</label>
+              <input type="text" id="description" name="description"  />
+            </p>
+          </div>
+          <p>
+            <label htmlFor="price">Price</label>
+            <input type="text" id="price" name="price"  />
+          </p>
+        
+         
+          <ImagePicker label="Your image" name="image" />
+       
+          <p className={classes.actions}>
+            <MealsFormSubmit />
+          </p>
+        </form>
+      </main>
+    </>
+  );
 }
 
+ 
+
+export default LoadPage;

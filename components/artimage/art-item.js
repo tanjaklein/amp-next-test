@@ -1,18 +1,24 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import mealIcon from './burger.jpg';
+import mealIcon from '@/assets/icons/meal.png';
+import { generateDownloadLinks } from '@/lib/meals';
 
 
 import classes from './art-item.module.css';
 
-export default function ArtItem({ name, id, image, description, price }) {
+export default function ArtItem({ name, slug, image, description, price }) {
+  console.log('ArtItem image:', image);
+  //const xxx = generateDownloadLinks(image)
+
+  // console.log('ArtItem image:', xxx);
+
+
   return (
     <article className={classes.artItem}>
       <header>
         <div className={classes.image} width={300} height={300}>
           <Image
-          src={`http://amplify-ampnexttest-tanja-allisonartimages1234567b-ozmq1robkg1j.s3.us-east-1.amazonaws.com/${image}`}
-         
+            src= "/next.svg"
             alt={name}
             fill
            
@@ -27,7 +33,7 @@ export default function ArtItem({ name, id, image, description, price }) {
       <div className={classes.content}>
         <p className={classes.desription}>{description}</p>
         <div className={classes.actions}>
-          <Link href={`/gallery/${id}`}>View Details</Link>
+          <Link href={`/gallery/${slug}`}>View Details</Link>
         </div>
       </div>
     </article>
