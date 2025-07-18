@@ -81,22 +81,24 @@ export async function saveMeal(meal:any) {
   }
     */
 
- export  async function generateDownloadLinks(fileKey: any) {
-  console.log('generateDownloadLinks' + fileKey);
-     const result =  downloadData(fileKey); 
+ export async function generateDownloadLinks(fileKey: any) {
+  console.log('generateDownloadLinks :' + fileKey);
+   //  const result =  downloadData("cat.jpg"); 
        try {
-    await downloadData(fileKey)
+    const linkToStorageFile =  await getUrl(
+      {path: `picture-submissions/${fileKey}`})
         
-          
-        .result
+         
+       
         ;
+        console.log('signed URL: ', linkToStorageFile.url);
+        console.log('URL expires at: ', linkToStorageFile.expiresAt);
+        return linkToStorageFile.url;
   } catch (error) {
     console.error('Error downloading data:', error);
   }
 
 
-   //return downloadBlob(result, fileKey);
-    return result;
     
   }
 

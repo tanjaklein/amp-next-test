@@ -2,15 +2,16 @@ import Link from 'next/link';
 import Image from 'next/image';
 import mealIcon from '@/assets/icons/meal.png';
 import { generateDownloadLinks } from '@/lib/meals';
+import burgerImg from '@/assets/burger.jpg';
 
 
 import classes from './art-item.module.css';
 
 export default function ArtItem({ name, slug, image, description, price }) {
   console.log('ArtItem image:', image);
-  //const xxx = generateDownloadLinks(image)
+  const xxx = generateDownloadLinks(image)
 
-  // console.log('ArtItem image:', xxx);
+  console.log('ArtItem image:', xxx.url);
 
 
   return (
@@ -18,7 +19,7 @@ export default function ArtItem({ name, slug, image, description, price }) {
       <header>
         <div className={classes.image} width={300} height={300}>
           <Image
-            src= "/next.svg"
+            src= { xxx.url || burgerImg }
             alt={name}
             fill
            
