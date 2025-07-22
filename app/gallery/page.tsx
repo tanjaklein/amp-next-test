@@ -5,6 +5,8 @@ import { generateClient } from "aws-amplify/api";
 import type { Schema } from "@/amplify/data/resource";
 import { Amplify } from "aws-amplify";
 import { useState, useEffect}  from "react";
+import { list,uploadData, getUrl, downloadData } from "aws-amplify/storage";
+
 
 // Update the import path to match the actual file location and name
 import   ArtsGrid   from "../../components/artimage/art-grid";
@@ -21,27 +23,50 @@ const App = dynamic(() => import("../App"), {
 const client = generateClient<Schema>() ;// use this Data client for CRUDL requests
 
 
- 
+
 
 
 
 export  function Gallery () {
    const [arts, setArts] = useState<Array<Schema["Artwork"]["type"]>>([]);
 
+     useEffect(() => {
+    fetchNotes();
+  }, []);
   /* useEffect(() => {
     client.models.Artwork.observeQuery().subscribe({
       next: (data) => setArts([...data.items]),
     });
   }, []);*/
 
-  useEffect(() => {
-    client.models.Artwork.list().then((data) => {
-      setArts(data.data);
-    });
-  }, []);
+  //useEffect(() => {
+   // client.models.Artwork.list().then((data) => {
+    //  setArts(data.data);
+   // });
+  //}, []);
+
+  async function fetchNotes() {
+    const { data: notes } = await client.models.Artwork.list();
+    console.log('Fetched notes:', notes);
+    await Promise.all(
+      notes.map(async (note) => {
+        if (note.image) {
+          const linkToStorageFile = await getUrl({
+            path: `picture-submissions/${note.image}`,
+          });
+          console.log(linkToStorageFile.url);
+          note.image = linkToStorageFile.url.href;
+        }
+        return note;
+      })
+    );
+    console.log("XXXXXXX " + notes);
+    setArts(notes);
+  }
    
   return(
     <>
+  
    <header>
     Gallery page
    </header>

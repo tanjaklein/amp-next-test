@@ -16,8 +16,9 @@ function App() {
         
           <Routes>
             <Route path="/"   />
-            <Route path="/category/ " />
-            <Route path="/product/" />
+            <Route path="/gallery/ " />
+            <Route path="/upload/" />
+             <Route path="/contact/" />
           </Routes>
        
         </Router>
