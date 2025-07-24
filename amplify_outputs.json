@@ -1,9 +1,9 @@
 {
   "auth": {
-    "user_pool_id": "us-east-1_VAjanUiH3",
+    "user_pool_id": "us-east-1_pRLtWcxmI",
     "aws_region": "us-east-1",
-    "user_pool_client_id": "4qtpruaag92g04r1655h54blea",
-    "identity_pool_id": "us-east-1:c8e26e67-b601-437b-babb-488f8100fc9a",
+    "user_pool_client_id": "16fcatn0tg9uk56s89sqhq262o",
+    "identity_pool_id": "us-east-1:a37b776f-808b-42a4-bb98-f360b579ca06",
     "mfa_methods": [],
     "standard_required_attributes": [
       "email"
@@ -26,7 +26,7 @@
     "unauthenticated_identities_enabled": true
   },
   "data": {
-    "url": "https://v6nb25lvgfdghh2hsxorf2chlu.appsync-api.us-east-1.amazonaws.com/graphql",
+    "url": "https://ny6sjkictnff5aw2aohabcnjv4.appsync-api.us-east-1.amazonaws.com/graphql",
     "aws_region": "us-east-1",
     "default_authorization_type": "AWS_IAM",
     "authorization_types": [
@@ -143,16 +143,56 @@
         }
       },
       "enums": {},
-      "nonModels": {}
+      "nonModels": {},
+      "queries": {
+        "SendEmail": {
+          "name": "SendEmail",
+          "isArray": false,
+          "type": "String",
+          "isRequired": false,
+          "arguments": {
+            "name": {
+              "name": "name",
+              "isArray": false,
+              "type": "String",
+              "isRequired": true
+            },
+            "source": {
+              "name": "source",
+              "isArray": false,
+              "type": "String",
+              "isRequired": true
+            },
+            "recipient": {
+              "name": "recipient",
+              "isArray": false,
+              "type": "String",
+              "isRequired": true
+            },
+            "subject": {
+              "name": "subject",
+              "isArray": false,
+              "type": "String",
+              "isRequired": true
+            },
+            "body": {
+              "name": "body",
+              "isArray": false,
+              "type": "String",
+              "isRequired": true
+            }
+          }
+        }
+      }
     }
   },
   "storage": {
     "aws_region": "us-east-1",
-    "bucket_name": "amplify-ampnexttest-tanja-allisonartimages1234567b-ivpkl7cgyzvc",
+    "bucket_name": "amplify-ampnexttest-tanja-allisonartimages1234567b-cj0ifufnkrrp",
     "buckets": [
       {
         "name": "allisonartimages1234567",
-        "bucket_name": "amplify-ampnexttest-tanja-allisonartimages1234567b-ivpkl7cgyzvc",
+        "bucket_name": "amplify-ampnexttest-tanja-allisonartimages1234567b-cj0ifufnkrrp",
         "aws_region": "us-east-1",
         "paths": {
           "profile-pictures/*": {

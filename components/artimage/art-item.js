@@ -3,6 +3,7 @@ import Image from 'next/image';
 import mealIcon from '@/assets/icons/meal.png';
 import { generateDownloadLinks } from '@/lib/meals';
 import burgerImg from '@/assets/burger.jpg';
+import { Card, Flex, Badge, View, useTheme} from '@aws-amplify/ui-react';
 
 
 import classes from './art-item.module.css';
@@ -13,8 +14,28 @@ export default function ArtItem({ name, slug, image, description, price }) {
 
   //console.log('222ArtItem image:', xxx.url);
 
+  const { tokens } = useTheme();
 
   return (
+   <>
+    <View
+      backgroundColor={tokens.colors.background.secondary}
+      padding={tokens.space.medium}
+    >
+    <Card>
+        <Flex>
+              <Badge size="small" variation="info">
+                Plus
+              </Badge>
+              <Badge size="small" variation="success">
+                Verified
+              </Badge>
+            </Flex>
+
+      </Card>
+      </View>
+
+  
     <article className={classes.artItem}>
       <header>
         <div className={classes.image} width={300} height={300}>
@@ -43,5 +64,6 @@ export default function ArtItem({ name, slug, image, description, price }) {
         </div>
       </div>
     </article>
+    </>
   );
 }

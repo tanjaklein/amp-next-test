@@ -2,13 +2,13 @@
 
 import { useFormStatus } from 'react-dom';
 
-export default function ArtworkFormSubmit() {
+export default function ContactFormSubmit() {
   const { pending } = useFormStatus();
 
-  console.log('ArtworkFormSubmit pending:', pending);
+  console.log('ContactFormSubmit pending:', pending);
   return (
     <button disabled={pending}>
-      {pending ? 'Submitting...' : 'Upload ArtWork'}
+      {pending ? 'Submitting...' : 'Send Email'}
     </button>
   );
 }

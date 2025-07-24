@@ -1,3 +1,4 @@
+import { sendEmail } from '../functions/sendemail/resource';
 import { type ClientSchema, a, defineData } from '@aws-amplify/backend';
 
 /*== STEP 1 ===============================================================
@@ -21,16 +22,37 @@ const schema = a.schema({
  
      })
      .authorization((allow) => [allow.guest()]),
+  SendEmail: a
+    .query()
+    .arguments({
+      name: a.string().required(),
+      source: a.string().required(),
+      recipient: a.string().required(),
+      subject: a.string( ).required(),
+      body: a.string().required(),
+
+
+    })
+    .returns(a.string())
+    .authorization(allow => [allow.guest()])
+    .handler(a.handler.function(sendEmail)),
 });
 
+
+
 export type Schema = ClientSchema<typeof schema>;
+
+//export type EmailSchema = ClientSchema<typeof emailschema>;
 
 export const data = defineData({
   schema,
   authorizationModes: {
     defaultAuthorizationMode: 'identityPool',
   },
+ 
 });
+
+
 
 /*== STEP 2 ===============================================================
 Go to your frontend source code. From your client-side code, generate a

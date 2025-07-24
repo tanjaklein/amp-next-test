@@ -6,7 +6,7 @@
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'amplify-ampnexttest-tanja-allisonartimages1234567b-ivpkl7cgyzvc.s3.us-east-1.amazonaws.com',
+        hostname: 'amplify-ampnexttest-tanja-allisonartimages1234567b-cj0ifufnkrrp.s3.us-east-1.amazonaws.com',
         port: '',
         pathname: '/**',
       },
@@ -23,15 +23,6 @@
 };
 
 module.exports = nextConfig;
-//export default nextConfig;
-/*module.exports = {
 
 
-  typescript: {
-    // !! WARN !!
-    // Dangerously allow production builds to successfully complete even if
-    // your project has type errors.
-    // !! WARN !!
-    ignoreBuildErrors: true,
-  },
-}*/
+

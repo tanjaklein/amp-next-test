@@ -3,18 +3,16 @@
 
 import classes from './page.module.css';
 
-import MealsFormSubmit from '@/components/artimage/meals-form-submit';
+import ContactFormSubmit from '@/components/contacts/contact-form-submit';
 
-import { shareMeal} from '@/lib/actions';
+
+import { sendContactEmail } from '@/lib/actions';
 import { useActionState } from "react";
-
-import { Amplify } from "aws-amplify";
-
 
 
 
 export  function ContactPage () {
-   const [state, formAction] = useActionState(shareMeal, { message: 'Email Sent successfully!' });
+   const [state, formAction] = useActionState(sendContactEmail, undefined);
 
    console.log('ContactPage state:', state);
    
@@ -41,6 +39,10 @@ export  function ContactPage () {
            
           </div>
            <p>
+              <label htmlFor="subject">Subject</label>
+              <textarea id="subject" name="subject"  />
+            </p>
+           <p>
               <label htmlFor="message">Message</label>
               <textarea id="message" name="message"  />
             </p>
@@ -49,7 +51,7 @@ export  function ContactPage () {
          
                  
           <p className={classes.actions}>
-            <MealsFormSubmit />
+            <ContactFormSubmit />
           </p>
         </form>
       </main>

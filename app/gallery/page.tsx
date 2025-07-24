@@ -2,7 +2,7 @@
 import React from "react";
 import dynamic from "next/dynamic";
 import { generateClient } from "aws-amplify/api";
-import type { Schema } from "@/amplify/data/resource";
+import type { Schema} from "@/amplify/data/resource";
 import { Amplify } from "aws-amplify";
 import { useState, useEffect}  from "react";
 import { list,uploadData, getUrl, downloadData } from "aws-amplify/storage";
@@ -21,9 +21,7 @@ const App = dynamic(() => import("../App"), {
   ssr: false});
 
 const client = generateClient<Schema>() ;// use this Data client for CRUDL requests
-
-
-
+//const emailclient = generateClient<EmailSchema>() ;// use this Data client for CRUDL requests
 
 
 

@@ -1,46 +1,15 @@
 'use client';
 
-import type { Schema } from "../../amplify/data/resource";
-import { generateClient } from "aws-amplify/data";
+
 import classes from './page.module.css';
 import ImagePicker from '@/components/artimage/image-picker';
-import MealsFormSubmit from '@/components/artimage/meals-form-submit';
-import { saveMeal } from '@/lib/meals';
 import { shareMeal} from '@/lib/actions';
 import { useActionState } from "react";
-
 import { Amplify } from "aws-amplify";
-
 import outputs from "@/amplify_outputs.json"; // Import the Amplify outputs file
+import ArtworkFormSubmit from "@/components/artimage/meals-form-submit";
 
 Amplify.configure(outputs)
-
-
-
-  /*async function createArt(event) {
-    event.preventDefault();
-    const form = new FormData(event.target);
-    console.log(form.get("image").name);
-
-    const { data: newNote } = await client.models.Note.create({
-      name: form.get("name"),
-      description: form.get("description"),
-      image: form.get("image").name,
-    });
-
-    console.log(newNote);
-    if (newNote.image)
-      if (newNote.image)
-        await uploadData({
-          path: ({ identityId }) => `media/${identityId}/${newNote.image}`,
-
-          data: form.get("image"),
-        }).result;
-
-  //  fetchNotes();
-    event.target.reset();
-  }
-    */
 
 
 
@@ -79,7 +48,7 @@ export  function LoadPage () {
           <ImagePicker label="Your image" name="image" />
        
           <p className={classes.actions}>
-            <MealsFormSubmit />
+            <ArtworkFormSubmit />
           </p>
         </form>
       </main>

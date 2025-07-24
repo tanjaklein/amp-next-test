@@ -8,6 +8,10 @@ import type { Schema } from "../amplify/data/resource";
 import { generateClient } from "aws-amplify/data";
 import { Amplify } from "aws-amplify";
 import { list,uploadData, getUrl, downloadData } from "aws-amplify/storage";
+import { redirect } from 'next/navigation';
+
+
+
 
 import { useState }  from 'react';
 
@@ -111,5 +115,30 @@ export async function saveMeal(meal:any) {
 
 
   
+  export async function sendTheEmail({ data }: { data: any }) {
+    
+    
+    //  const rsp = await sendTheEmail ({name, email, subject, body})
+    console.log('sendContactEmail called with data:');
+
+    const client = generateClient<Schema>() ;// use this Data client for CRUDL requests
+    //const emailclient = generateClient<EmailSchema>() ;// use this Data client for CRUDL requests
+    
+    const response =  await client.queries.SendEmail({
+      name: data.name,
+      source: "tanjav@mweb.co.za",
+      recipient: data.email,
+      body: data.body,
+      subject: data.subject
+    });
+    
+    
+    
+    
+        
+    console.log("Response from sayHello query:", response);
+
+    
+  }
 
   
