@@ -18,11 +18,14 @@ export default function MainHeader() {
 
         <nav className={classes.nav}>
           <ul>
+             <li>
+              <NavLink href="/">Home</NavLink>
+            </li>
             <li>
               <NavLink href="/gallery">Browse Gallery</NavLink>
             </li>
             <li>
-              <NavLink href="/contact">Send Email</NavLink>
+              <NavLink href="/contact">Contact</NavLink>
             </li>
              <li>
               <NavLink href="/upload">Upload</NavLink>

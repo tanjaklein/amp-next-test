@@ -34,7 +34,7 @@ export  function ContactPage () {
             </p>
               <p>
             <label htmlFor="email">E-mail</label>
-            <input type="text" id="email" name="email"  />
+            <input type="email" id="email" name="email"  />
           </p>
            
           </div>

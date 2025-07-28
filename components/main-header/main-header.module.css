@@ -4,6 +4,12 @@
   align-items: center;
   padding: 2rem 1rem;
 }
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem 1rem;
+}
 
 @media (min-width: 768px) {
   .header {

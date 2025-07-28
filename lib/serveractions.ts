@@ -1,5 +1,4 @@
-// import fs from 'node:fs';
-import { S3 } from '@aws-sdk/client-s3';
+
 
 
 import slugify from 'slugify';
@@ -8,12 +7,7 @@ import type { Schema } from "../amplify/data/resource";
 import { generateClient } from "aws-amplify/data";
 import { Amplify } from "aws-amplify";
 import { list,uploadData, getUrl, downloadData } from "aws-amplify/storage";
-import { redirect } from 'next/navigation';
 
-
-
-
-import { useState }  from 'react';
 
 import outputs from "@/amplify_outputs.json"; // Import the Amplify outputs file
 
@@ -25,29 +19,37 @@ const client = generateClient<Schema>() ;// use this Data client for CRUDL reque
 
 
 
-export async function saveMeal(meal:any) {
-  console.log ('saveMeal called with meal:', meal);
-  meal.slug = slugify(meal.name, { lower: true });
-  meal.name = xss(meal.name);
-  meal.description = xss(meal.description);
-  meal.price = parseInt(meal.price);
-  if (isNaN(meal.price)) {
-  throw new Error('Invalid price');
- }
+export async function saveArt(artwork:any) {
+  console.log ('saveArt called with meal:', artwork);
+  artwork.slug = slugify(artwork.name, { lower: true });
+  artwork.name = xss(artwork.name);
+  artwork.description = xss(artwork.description);
+ 
+  try {
+    console.log ("Parsing Price : " + artwork.price);
+  artwork.price = parseInt(artwork.price);
+  }
+  catch (error) {
+    console.error('Error parsing price:', error);
+    return error;
+  }
+ // if (isNaN(meal.price)) {
+ // throw new Error('Invalid price');
+ //}
  //meal.image = xss(meal.image);
 
 
-  const extension = meal.image.name.split('.').pop();
-  const fileName = `${meal.slug}.${extension}`;
+  const extension = artwork.image.name.split('.').pop();
+  const fileName = `${artwork.slug}.${extension}`;
   console.log('File name:', fileName);  
 
-   if (meal.image)
+   if (artwork.image)
   try {
     await uploadData({
           
           path: `picture-submissions/${fileName}`,
 
-          data: meal.image,
+          data: artwork.image,
         }).result
         ;
   } catch (error) {
@@ -56,9 +58,9 @@ export async function saveMeal(meal:any) {
 
 
  
-  meal.image = fileName;
+  artwork.image = fileName;
 
-  client.models.Artwork.create(meal).then((data) => {
+  client.models.Artwork.create(artwork).then((data) => {
     console.log('Artwork saved:', data);
   }).catch((error) => {
     console.error('Error saving Artwork:', error);
@@ -68,22 +70,6 @@ export async function saveMeal(meal:any) {
 }
 
 
-
-/*async function listObjectsFromS3() {
-   const [s3DownloadLinks, setS3DownloadLinks] = useState<HTMLAnchorElement[]>([]);
-    const s3Objects = await list( {
-      path: 'picture-submissions',
-    });
-   
-    s3Objects.items.map(async (item) => {
-      const downloadLink = await generateDownloadLinks(item.path);
-      setS3DownloadLinks((s3DownloadLinks) => [
-        ...s3DownloadLinks,
-        downloadLink,
-      ]);
-    });
-  }
-    */
 
  export async function generateDownloadLinks(fileKey: any) {
   console.log('generateDownloadLinks :' + fileKey);
@@ -118,11 +104,9 @@ export async function saveMeal(meal:any) {
   export async function sendTheEmail({ data }: { data: any }) {
     
     
-    //  const rsp = await sendTheEmail ({name, email, subject, body})
     console.log('sendContactEmail called with data:');
 
     const client = generateClient<Schema>() ;// use this Data client for CRUDL requests
-    //const emailclient = generateClient<EmailSchema>() ;// use this Data client for CRUDL requests
     
     const response =  await client.queries.SendEmail({
       name: data.name,
@@ -136,7 +120,7 @@ export async function saveMeal(meal:any) {
     
     
         
-    console.log("Response from sayHello query:", response);
+    console.log("Response from sendTheEmail query:", response);
 
     
   }

@@ -58,7 +58,7 @@ export  function Gallery () {
         return note;
       })
     );
-    console.log("XXXXXXX " + notes);
+   
     setArts(notes);
   }
    

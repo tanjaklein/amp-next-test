@@ -3,18 +3,18 @@
 
 import classes from './page.module.css';
 import ImagePicker from '@/components/artimage/image-picker';
-import { shareMeal} from '@/lib/actions';
+import { shareArtwork} from '@/lib/actions';
 import { useActionState } from "react";
 import { Amplify } from "aws-amplify";
 import outputs from "@/amplify_outputs.json"; // Import the Amplify outputs file
-import ArtworkFormSubmit from "@/components/artimage/meals-form-submit";
+import ArtworkFormSubmit from "@/components/artimage/artwork-form-submit";
 
 Amplify.configure(outputs)
 
 
 
 export  function LoadPage () {
-   const [state, formAction] = useActionState(shareMeal, { message: 'Meal shared successfully!' });
+   const [state, formAction] = useActionState(shareArtwork, { message: 'Artwork uploaded successfully!' });
 
    console.log('LoadPage state:', state);
    
@@ -23,9 +23,9 @@ export  function LoadPage () {
     <>
    <header className={classes.header}>
         <h1>
-          Share your <span className={classes.highlight}>favorite meal</span>
+          Upload your <span className={classes.highlight}>art work</span>
         </h1>
-        <p>Or any other meal you feel needs sharing!</p>
+        <p>Or any other image you feel needs sharing!</p>
       </header>
       <main className={classes.main}>
         <form className={classes.form} action={formAction}>
@@ -41,7 +41,7 @@ export  function LoadPage () {
           </div>
           <p>
             <label htmlFor="price">Price</label>
-            <input type="text" id="price" name="price"  />
+            <input type="number" id="price" name="price"  />
           </p>
         
          
