@@ -9,7 +9,7 @@ import { Card, Flex, Badge, View, useTheme} from '@aws-amplify/ui-react';
 import classes from './art-item.module.css';
 
 export default function ArtItem({ name, slug, image, description, price }) {
-  console.log('111ArtItem image:', image);
+ 
  // const xxx = generateDownloadLinks(image)
 
   //console.log('222ArtItem image:', xxx.url);

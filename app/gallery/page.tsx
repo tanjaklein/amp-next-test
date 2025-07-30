@@ -29,7 +29,7 @@ export  function Gallery () {
    const [arts, setArts] = useState<Array<Schema["Artwork"]["type"]>>([]);
 
      useEffect(() => {
-    fetchNotes();
+    fetchArtworks();
   }, []);
   /* useEffect(() => {
     client.models.Artwork.observeQuery().subscribe({
@@ -43,23 +43,23 @@ export  function Gallery () {
    // });
   //}, []);
 
-  async function fetchNotes() {
-    const { data: notes } = await client.models.Artwork.list();
-    console.log('Fetched notes:', notes);
+  async function fetchArtworks() {
+    const { data: artworks } = await client.models.Artwork.list();
+    console.log('Fetched arts:', artworks);
     await Promise.all(
-      notes.map(async (note) => {
-        if (note.image) {
+      artworks.map(async (art) => {
+        if (art.image) {
           const linkToStorageFile = await getUrl({
-            path: `picture-submissions/${note.image}`,
+            path: `picture-submissions/${art.image}`,
           });
           console.log(linkToStorageFile.url);
-          note.image = linkToStorageFile.url.href;
+          art.image = linkToStorageFile.url.href;
         }
-        return note;
+        return art;
       })
     );
    
-    setArts(notes);
+    setArts(artworks);
   }
    
   return(

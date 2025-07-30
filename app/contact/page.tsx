@@ -40,16 +40,14 @@ export  function ContactPage () {
           </div>
            <p>
               <label htmlFor="subject">Subject</label>
-              <textarea id="subject" name="subject"  />
+             <input type="text" id="subject" name="subject" required />
             </p>
            <p>
               <label htmlFor="message">Message</label>
-              <textarea id="message" name="message"  />
+              <textarea id="message" name="message" 
+              rows={10} required />
             </p>
-        
-        
-         
-                 
+                
           <p className={classes.actions}>
             <ContactFormSubmit />
           </p>

@@ -18,6 +18,35 @@ Amplify.configure(outputs);
 const client = generateClient<Schema>() ;// use this Data client for CRUDL requests
 
 
+export async function getArtwork (slug: any) {
+  console.log('getArtwork called with slug:', slug);
+  const { data: artworks, errors}  = await client.models.Artwork.list({
+    filter: {
+      slug: {eq: slug}
+    }
+});
+    await Promise.all(
+        artworks.map(async (art) => {
+          if (art.image) {
+            const linkToStorageFile = await getUrl({
+              path: `picture-submissions/${art.image}`,
+            });
+            console.log(linkToStorageFile.url);
+            art.image = linkToStorageFile.url.href;
+          }
+          return art;
+        })
+      );
+
+  console.log('getArtwork returned:', artworks);
+  return artworks;
+}
+export async function getArtworks () {
+  console.log('getArtworks called');
+  const artworks = await client.models.Artwork.list();
+  console.log('getArtworks returned:', artworks);
+  return artworks;
+} 
 
 export async function saveArt(artwork:any) {
   console.log ('saveArt called with meal:', artwork);
