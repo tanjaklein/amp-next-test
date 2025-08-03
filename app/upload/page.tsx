@@ -3,7 +3,7 @@
 
 import classes from './page.module.css';
 import ImagePicker from '@/components/artimage/image-picker';
-import { shareArtwork} from '@/lib/actions';
+import { shareArtwork} from '@/utils/actions';
 import { useActionState } from "react";
 import { Amplify } from "aws-amplify";
 import outputs from "@/amplify_outputs.json"; // Import the Amplify outputs file

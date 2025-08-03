@@ -1,8 +1,11 @@
+
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import MainHeader from "@/components/main-header/main-header";
 import MainFooter from "@/components/main-header/main-footer";
+import { ThemeProvider } from '@aws-amplify/ui-react';
+import '@aws-amplify/ui-react/styles.css';
 
 
 const geistSans = Geist({
@@ -28,9 +31,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
+      
         <MainHeader/>
         {children}
         <MainFooter/>
+       
       </body>
     </html>
   );

@@ -1,6 +1,9 @@
 'use client';
 
-import Link from 'next/link';
+
+import "@aws-amplify/ui-react/styles.css";
+   import { Link } from '@aws-amplify/ui-react';
+
 import { usePathname } from 'next/navigation';
 import classes from './nav-link.module.css';
 
@@ -10,10 +13,10 @@ export default function NavLink({ href, children }) {
   return (
     <Link
       href={href}
-      className={
+      color={
         path.startsWith(href)
-          ? `${classes.link} ${classes.active}`
-          : classes.link
+          ? "#007EB9"
+          : "#b900a0ff"
       }
     >
       {children}

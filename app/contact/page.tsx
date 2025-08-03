@@ -4,9 +4,10 @@
 import classes from './page.module.css';
 
 import ContactFormSubmit from '@/components/contacts/contact-form-submit';
+import { Button, Flex, Input, Label, Heading, TextAreaField } from '@aws-amplify/ui-react';
 
 
-import { sendContactEmail } from '@/lib/actions';
+import { sendContactEmail } from '@/utils/actions';
 import { useActionState } from "react";
 
 
@@ -15,8 +16,45 @@ export  function ContactPage () {
    const [state, formAction] = useActionState(sendContactEmail, undefined);
 
    console.log('ContactPage state:', state);
+
+   return (
+    <>
+    <Flex as='div'  direction="column">
+      <Flex>
+
+   
    
 
+
+<Heading
+  width='30vw'
+  level={4} 
+>
+  Send an  email, and we will get back to you
+</Heading>
+    </Flex>
+     <Flex as="form" direction="column" width="20rem">
+      <Flex direction="column" gap="small">
+        <Label htmlFor="email">Email</Label>
+        <Input id="email" type="email" isRequired />
+      </Flex>
+       <Flex direction="column" gap="small">
+        <Label htmlFor="subject">Subject</Label>
+        <Input id="subject" width="75%" />
+      </Flex>
+      <TextAreaField
+  descriptiveText="Write your message"
+  label="Last Message"
+  name="Message"
+  placeholder="your message"
+  rows={3}/>
+      <Button type="submit">Submit</Button>
+    </Flex>
+       </Flex>
+    </>
+   )
+   
+/*
   return(
     <>
    <header className={classes.header}>
@@ -55,7 +93,8 @@ export  function ContactPage () {
       </main>
     </>
   );
-}
+*/
+  }
 
  
 

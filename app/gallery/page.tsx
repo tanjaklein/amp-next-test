@@ -17,8 +17,8 @@ import outputs from "@/amplify_outputs.json"; // Import the Amplify outputs file
 Amplify.configure(outputs)
 
 
-const App = dynamic(() => import("../App"), {
-  ssr: false});
+//const App = dynamic(() => import("../App"), {
+ // ssr: false});
 
 const client = generateClient<Schema>() ;// use this Data client for CRUDL requests
 //const emailclient = generateClient<EmailSchema>() ;// use this Data client for CRUDL requests

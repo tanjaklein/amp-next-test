@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import mealIcon from '@/assets/icons/meal.png';
-import { generateDownloadLinks } from '@/lib/serveractions';
+import { generateDownloadLinks } from '@/utils/serveractions';
 import burgerImg from '@/assets/burger.jpg';
 import { Card, Flex, Badge, View, useTheme} from '@aws-amplify/ui-react';
 

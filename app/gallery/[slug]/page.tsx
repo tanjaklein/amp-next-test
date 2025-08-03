@@ -1,14 +1,12 @@
 'use client';
 
-import Image from 'next/image';
-import { notFound } from 'next/navigation';
 
-import { getArtwork } from '@/lib/serveractions';
-import classes from './page.module.css';
-import React, { useState, useEffect, use , useRef } from 'react';
-import { useParams } from 'react-router-dom';
-import type { Schema } from "../../../amplify/data/resource";
-import { Artwork } from 'aws-sdk/clients/elastictranscoder';
+import { getArtwork } from '@/utils/serveractions';
+import React, { useState, useEffect, use } from 'react';
+
+   import { Link, Card, Flex, Image, View, useTheme, Badge, Text, Divider, Heading} from '@aws-amplify/ui-react';
+    
+
 
 
 
@@ -50,11 +48,8 @@ interface MyArt {
 
 }
 export default  function ArtDetailsPage({ params }: { params: Promise<{ slug: string }> }) {
- // export default  function ArtDetailsPage() {
-
-  //const artItem = getArtwork(params.slug);
-  
-   //console.log (" Artwork slug" + slug);
+ 
+   const { tokens } = useTheme();
    const [error, setError] = useState('');
     const [state, setState] = useState('');
     const [artItem, setArtItem] = useState<MyArt>();
@@ -69,34 +64,27 @@ export default  function ArtDetailsPage({ params }: { params: Promise<{ slug: st
     console.log (" JJJJ Artwork slug= " + slug);
    //const ss =  params.slug;
 
-  // Removed duplicate declaration of artItem
   
-  //console.log (" Artwork slug" + ss);
  
 
    useEffect(() => {
     
-    console.log (" ZZZZZZ Artwork slug" + slug);
+    console.log (" useEffect Artwork slug" + slug);
     setState("loading");
 
      
       fetchArtworks(slug);
-     
-    
+        
     
   }, [ ]);
   
 
-   console.log (" KKKKKKK  Artwork slug= " + slug);
-
+  
  async function  fetchArtworks (slug:any) {
 
    console.log (" ZZZZZZ fetchArtwork" + slug);
     
-     // const artItemDataArray = getArtwork(slug).then ((res) => {
-
     
-     // const artItemData = Array.isArray(artItemDataArray) ? artItemDataArray[0] : artItemDataArray;
       setState("loading");
 try {
      const res = await getArtwork(slug);
@@ -125,30 +113,90 @@ try {
       }
     }
 
-      console.log (" HELLOOOOOOOO");
-  
-  
+     
   return (
+    <View
+          backgroundColor={tokens.colors.background.secondary}
+          padding={tokens.space.medium}
+        >
+          <Card>
+            <Flex direction="row" alignItems="flex-start">
+              <Image
+               src={artItem?.image ?? ''}
+               alt={artItem?.name ?? ''}
+               width="33%"
+              />
+              <Flex
+                direction="column"
+                alignItems="flex-start"
+                gap={tokens.space.xs}
+              >
+                <Flex>
+                  <Badge size="small" variation="info">
+                    {artItem?.isAvailable ? 'Available': 'Not Available'}
+                  </Badge>
+                  <Badge size="small" variation="success">
+                    Verified
+                  </Badge>
+                </Flex>
+    
+                <Heading level={5}>
+                {artItem?.name ?? ''}
+                </Heading>
+    
+                <Text as="span">
+                   {artItem?.description ?? ''}
+                </Text>
+
+                 <Text as="span">
+                   R{artItem?.price}.00
+                </Text>
+                  <Link  href="/contract" 
+                  color="#4177c9ff">
+                    Send an Email</Link>
+              </Flex>
+            </Flex>
+    
+          </Card>
+           <Divider
+        orientation="horizontal" />
+        </View>
+    
+    
+    /*
     <>
       <header className={classes.header}>
         <div className={classes.image}>
           
-         {state==='success' && (<Image
+         {state==='success' && (
+        
+          <Image
             src={artItem?.image ?? ''}
             alt={artItem?.name ?? ''}
             fill
+             style={{
+                  objectFit: 'contain',
+              }}
+                 placeholder="blur"
+          blurDataURL="data:application/xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz48RXJyb3I+PENvZGU+SHR0cFZlcnNpb25Ob3RTdXBwb3J0ZWQ8L0NvZGU+PE1lc3NhZ2U+VGhlIEhUVFAgdmVyc2lvbiBzcGVjaWZpZWQgaXMgbm90IHN1cHBvcnRlZC48L01lc3NhZ2U+PFJlcXVlc3RJZD43MkQ4NUVCQkMxQjg3QUVGPC9SZXF1ZXN0SWQ+PEhvc3RJZD5FdWxFc05sTWVLYnBHNStSVlc1bWFFTWlENzJNQ1pCTW8zbytGWmJuVnBYVVJrV1RQZkxoZC9iSWpoa0pUWDJ3czBOSVJQQVcyNGY1U3BwdUNEVkQwK25qQVkvbDNsVDQ8L0hvc3RJZD48L0Vycm9yPg=="
+          
           />
-         )}
+           
 
-            {state==='poo' && (<h1 className={classes.loading}> POO</h1>)}
+         )
+         }
 
+ <div className={classes.headerText}>
+                <h2>{artItem?.name} </h2>
+                <p>price {artItem?.price} </p>
+              </div>
           {state==='loading' && (<h2 className={classes.loading}> LOADING</h2>)}
           {state==='error' && (<h2 className={classes.loading}> ERROR SORRY</h2>)}
           <h1>{artItem?.name}</h1>
           <p className={classes.name}>
           <h1>{artItem?.price}</h1>
           <p className={classes.price}>
-            by {artItem?.price}
+            price is {artItem?.price}
           </p>
           <p className={classes.description}>{artItem?.description}</p>
           </p>
@@ -156,6 +204,7 @@ try {
       </header>
       
     </>
+    */
   );
 }
 

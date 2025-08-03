@@ -1,29 +1,44 @@
-import Link from 'next/link';
-import Image from 'next/image';
+'use client';
 
+import "@aws-amplify/ui-react/styles.css";
+   import { Card, Flex, Image, View, useTheme, Badge, Text, StepperField, Heading} from '@aws-amplify/ui-react';
+   import NavLink from './nav-link';
 
-import logoImg from '@/assets/logo.png';
-import classes from './main-header.module.css';
-import NavLink from './nav-link';
-import MainFooterBackground from './main-footer-background';
 
 export default function MainFooter() {
-  return (
-    <>
-      <MainFooterBackground/>
-      <footer className={classes.footer}>
-       
+   const { tokens } = useTheme();
 
-        <nav className={classes.nav}>
-          <ul>
-             <li>
-              <NavLink href="/">Home</NavLink>
+  return (
+     <View
+    as="div"
+     backgroundColor={tokens.colors.green[40]}
+     
+      
+      padding={tokens.space.medium}
+      alignItems="baseline"
+       style={{
+      position: 'fixed',
+      left: 0,
+      bottom: 0,
+      width: '100%',
+      zIndex: 100,
+    }}
+    >
+      <Card >
+        <Flex direction="row" justifyContent="space-between" >
           
-            
-            </li>
-          </ul>
-        </nav>
-      </footer>
-    </>
+         
+        <Flex direction="row" alignItems="flex-start">
+         
+                <NavLink href="/">Home</NavLink>
+         
+                      
+
+         </Flex>
+          
+        </Flex>
+      </Card>
+    </View>
+ 
   );
 }
