@@ -17,6 +17,7 @@ export async function shareArtwork(prevState, formData) {
    
     image: formData.get('image'),
     price: formData.get('price'),
+     isAvailable: formData.get('isAvailable') === 'on',
   
   };
 

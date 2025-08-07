@@ -117,14 +117,14 @@ try {
   return (
     <View
           backgroundColor={tokens.colors.background.secondary}
-          padding={tokens.space.medium}
+          padding={tokens.space.small}
         >
           <Card>
             <Flex direction="row" alignItems="flex-start">
               <Image
-               src={artItem?.image ?? ''}
+               src={artItem?.image ?? undefined }
                alt={artItem?.name ?? ''}
-               width="33%"
+               width="90%"
               />
               <Flex
                 direction="column"
@@ -135,9 +135,7 @@ try {
                   <Badge size="small" variation="info">
                     {artItem?.isAvailable ? 'Available': 'Not Available'}
                   </Badge>
-                  <Badge size="small" variation="success">
-                    Verified
-                  </Badge>
+                 
                 </Flex>
     
                 <Heading level={5}>
@@ -148,10 +146,10 @@ try {
                    {artItem?.description ?? ''}
                 </Text>
 
-                 <Text as="span">
-                   R{artItem?.price}.00
+                 <Text as="span"  fontStyle="italic">
+                   Price: R{artItem?.price}.00
                 </Text>
-                  <Link  href="/contract" 
+                  <Link  href="/contact" 
                   color="#4177c9ff">
                     Send an Email</Link>
               </Flex>

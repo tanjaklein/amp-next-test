@@ -1,11 +1,10 @@
 "use client"
 import React from "react";
-import dynamic from "next/dynamic";
 import { generateClient } from "aws-amplify/api";
 import type { Schema} from "@/amplify/data/resource";
 import { Amplify } from "aws-amplify";
 import { useState, useEffect}  from "react";
-import { list,uploadData, getUrl, downloadData } from "aws-amplify/storage";
+import { getUrl} from "aws-amplify/storage";
 
 
 // Update the import path to match the actual file location and name
@@ -13,6 +12,7 @@ import   ArtsGrid   from "../../components/artimage/art-grid";
 
 
 import outputs from "@/amplify_outputs.json"; // Import the Amplify outputs file
+import { View } from "@aws-amplify/ui-react";
 
 Amplify.configure(outputs)
 
@@ -21,8 +21,6 @@ Amplify.configure(outputs)
  // ssr: false});
 
 const client = generateClient<Schema>() ;// use this Data client for CRUDL requests
-//const emailclient = generateClient<EmailSchema>() ;// use this Data client for CRUDL requests
-
 
 
 export  function Gallery () {
@@ -65,15 +63,13 @@ export  function Gallery () {
   return(
     <>
   
-   <header>
-    Gallery page
-   </header>
-   <div>
-     <p>Welcome to the Gallery page!</p>
+  
+   <View as='div'>
+     
      <ArtsGrid arts={arts} />
      
     
-     </div>
+     </View>
     
 
      

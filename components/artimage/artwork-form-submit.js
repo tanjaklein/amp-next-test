@@ -1,10 +1,12 @@
 'use client';
 
+import { Button, useTheme } from '@aws-amplify/ui-react';
 import { useFormStatus } from 'react-dom';
 
 export default function ArtworkFormSubmit() {
   const { pending } = useFormStatus();
   const { error } = useFormStatus();
+    const { tokens } = useTheme();
 
 
   console.log('ArtworkFormSubmit pending:', pending);
@@ -13,8 +15,8 @@ export default function ArtworkFormSubmit() {
 
 
   return (
-    <button disabled={pending}>
+     <Button backgroundColor={tokens.colors.primary['40']} >
       {pending ? 'Submitting...' : 'Upload ArtWork'}
-    </button>
+    </Button>
   );
 }

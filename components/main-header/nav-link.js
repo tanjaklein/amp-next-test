@@ -2,21 +2,26 @@
 
 
 import "@aws-amplify/ui-react/styles.css";
-   import { Link } from '@aws-amplify/ui-react';
+   import { Link, useTheme } from '@aws-amplify/ui-react';
 
 import { usePathname } from 'next/navigation';
-import classes from './nav-link.module.css';
 
 export default function NavLink({ href, children }) {
   const path = usePathname();
+   const { tokens } = useTheme();
+   
 
   return (
+
+    
+    
     <Link
       href={href}
       color={
-        path.startsWith(href)
-          ? "#007EB9"
-          : "#b900a0ff"
+        path===href // if not the current path
+          ? tokens.colors.primary['80']
+          : tokens.colors.neutral['80']
+         
       }
     >
       {children}
