@@ -45,7 +45,7 @@ export default function MainHeader() {
          
                 <NavLink href="/">Home</NavLink>
          
-              <NavLink href="/gallery">Browse Gallery</NavLink>
+              <NavLink href="/gallery">Gallery</NavLink>
          
           
               <NavLink href="/upload">Upload</NavLink>

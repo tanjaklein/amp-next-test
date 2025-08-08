@@ -49,8 +49,9 @@ export async function sendContactEmail (prevState, formData) {
 
     const rsp = await sendTheEmail ({data})
 
-   revalidatePath('/');
-   redirect('/');
+   revalidatePath('/contact');
+   redirect('/contact');
+   return { message: rsp.message };
 
   }
 

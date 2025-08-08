@@ -3,15 +3,14 @@
 import ImagePicker from '@/components/artimage/image-picker';
 import { shareArtwork} from '@/utils/actions';
 import { useActionState } from "react";
-import ArtworkFormSubmit from "@/components/artimage/artwork-form-submit";
-import {View, CheckboxField,Radio, Flex, Input, Label, Divider, TextAreaField, Card, useTheme, Text } from '@aws-amplify/ui-react';
+import {Authenticator, View, CheckboxField,Flex, Input, Label, Button, TextAreaField, useTheme, Text } from '@aws-amplify/ui-react';
 
 
 
 
 
 export  function LoadPage () {
-   const [state, formAction] = useActionState(shareArtwork, { message: 'Artwork uploaded successfully!' });
+   const [state, formAction, isPending] = useActionState(shareArtwork, { message: 'Artwork uploaded successfully!' });
     const { tokens } = useTheme();
 
    console.log('LoadPage state:', state);
@@ -19,15 +18,18 @@ export  function LoadPage () {
 
   return(
      <>
+     <Authenticator>
+
+    
          <View
           as="div"
       ariaLabel="View example"
       backgroundColor="var(--amplify-colors-white)"
       borderRadius="6px"
-      border="1px solid var(--amplify-colors-black)"
-      boxShadow="3px 3px 5px 6px var(--amplify-colors-neutral-60)"
+     
+     
       color="var(--amplify-colors-blue-60)"
-      width={"50%" }
+      width={"100%" }
       maxWidth="100%"
       padding="1rem"
      
@@ -45,16 +47,15 @@ export  function LoadPage () {
         fontSize="1em"
         fontStyle="normal"
         textDecoration="none"
-        width="30vw"
+      
     >
-       Upload your art work
-        Or any other image you feel needs sharing!
+       Upload your art work, Or any other image you feel needs sharing!
 
     </Text>
        
         </Flex>
-         <Flex as="form" action={formAction} direction="column" width="20rem">
-          <Flex direction="row" gap="small" alignItems={'center'}>
+         <Flex as="form" action={formAction} direction="column" width="box" alignContent={'left'} gap="small">
+          <Flex direction="column" gap="small" alignItems={'left'}>
             <Label htmlFor="name" ><Text as ='strong' color={tokens.colors.primary[80]}>Name:</Text></Label>
             <Input id="name" name="name" type="text" isRequired/>
           </Flex>
@@ -65,7 +66,7 @@ export  function LoadPage () {
       placeholder="your description"
       id="description"
       rows={3}/>
-           <Flex direction="row" gap="small" alignItems={'center'} >
+           <Flex direction="column" gap="small" alignItems={'left'} >
             <Label htmlFor="price"><Text as ='strong' color={tokens.colors.primary[80]}>Price:</Text></Label>
             <Input id="price" name="price" type='number' isRequired  />
           </Flex>
@@ -81,49 +82,17 @@ export  function LoadPage () {
           
           <ImagePicker label="Your image" name="image" />
  
-          <ArtworkFormSubmit />  
+          <Button type="submit"  backgroundColor={tokens.colors.primary['40']} >
+               {isPending ? 'Submitting...' : 'Upload ArtWork'}
+             </Button>
     
         </Flex>
       </Flex>
       
         </View>
-        
+         </Authenticator>
         </>
-    /*
-    <>
-   <header className={classes.header}>
-        <h1>
-          Upload your <span className={classes.highlight}>art work</span>
-        </h1>
-        <p>Or any other image you feel needs sharing!</p>
-      </header>
-      <main className={classes.main}>
-        <form className={classes.form} action={formAction}>
-          <div className={classes.row}>
-            <p>
-              <label htmlFor="name">Name</label>
-              <input type="text" id="name" name="name"  />
-            </p>
-            <p>
-              <label htmlFor="description">Description</label>
-              <input type="text" id="description" name="description"  />
-            </p>
-          </div>
-          <p>
-            <label htmlFor="price">Price</label>
-            <input type="number" id="price" name="price"  />
-          </p>
-        
-         
-          <ImagePicker label="Your image" name="image" />
-       
-          <p className={classes.actions}>
-            <ArtworkFormSubmit />
-          </p>
-        </form>
-      </main>
-    </>
-    */
+    
   );
 }
 
