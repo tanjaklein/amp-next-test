@@ -3,22 +3,28 @@
 import ImagePicker from '@/components/artimage/image-picker';
 import { shareArtwork} from '@/utils/actions';
 import { useActionState } from "react";
-import {Authenticator, View, CheckboxField,Flex, Input, Label, Button, TextAreaField, useTheme, Text } from '@aws-amplify/ui-react';
+import { Amplify } from 'aws-amplify';
+import outputs from '@/amplify_outputs.json';
+import { View, CheckboxField,Flex, Input, Label, Button, TextAreaField, useTheme, Text, Authenticator } from '@aws-amplify/ui-react';
 
 
 
-
+Amplify.configure(outputs);
 
 export  function LoadPage () {
    const [state, formAction, isPending] = useActionState(shareArtwork, { message: 'Artwork uploaded successfully!' });
     const { tokens } = useTheme();
+   
+   
 
    console.log('LoadPage state:', state);
    
 
   return(
      <>
-     <Authenticator>
+    
+        <Authenticator>
+            {({ signOut, user }) => ( 
 
     
          <View
@@ -49,7 +55,7 @@ export  function LoadPage () {
         textDecoration="none"
       
     >
-       Upload your art work, Or any other image you feel needs sharing!
+      Hello {user?.signInDetails?.loginId}, Upload your art work, Or any other image you feel needs sharing!
 
     </Text>
        
@@ -85,12 +91,17 @@ export  function LoadPage () {
           <Button type="submit"  backgroundColor={tokens.colors.primary['40']} >
                {isPending ? 'Submitting...' : 'Upload ArtWork'}
              </Button>
+                  <Button onClick={signOut}>Sign out</Button>
+
+             
     
         </Flex>
       </Flex>
       
         </View>
-         </Authenticator>
+          )}
+            </Authenticator>
+        
         </>
     
   );

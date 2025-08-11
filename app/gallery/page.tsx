@@ -55,7 +55,9 @@ export  function Gallery () {
         }
         return art;
       })
-    );
+    ).catch((error) => {
+      console.error("Error fetching artwork images:", error) ;
+  });
    
     setArts(artworks);
   }

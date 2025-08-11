@@ -149,8 +149,11 @@ try {
                  <Text as="span"  fontStyle="italic">
                    Price: R{artItem?.price}.00
                 </Text>
+                  <Text as="span"  fontStyle="italic">
+                   Created At: {artItem?.createdAt}
+                </Text>
                   <Link  href="/contact" 
-                  color="#4177c9ff">
+                  color={tokens.colors.font.teal}>
                     Send an Email</Link>
               </Flex>
             </Flex>

@@ -2,12 +2,18 @@
 import schnitzel from '@/assets/schnitzel.jpg';
 
 import "@aws-amplify/ui-react/styles.css";
-   import { Link, Card, Flex, Image, View, useTheme, Badge, Text, Divider, Heading} from '@aws-amplify/ui-react';
+import { Authenticator } from '@aws-amplify/ui-react';
+import { Amplify } from 'aws-amplify';
+import outputs from '@/amplify_outputs.json';
+   import { Link, Card, Flex, Image, View, useTheme, Badge, Text, Divider, Heading, Button} from '@aws-amplify/ui-react';
 
-
+Amplify.configure(outputs);
 export default function Home() {
    const { tokens } = useTheme();
   return (
+  
+    
+  
 <View
       backgroundColor={tokens.colors.background.secondary}
       padding={tokens.space.medium}
@@ -45,6 +51,7 @@ export default function Home() {
                 View the Gallery</Link>
           </Flex>
         </Flex>
+          
 
       </Card>
        <Divider
@@ -52,6 +59,7 @@ export default function Home() {
     </View>
 
 
+   
 
   );
 }

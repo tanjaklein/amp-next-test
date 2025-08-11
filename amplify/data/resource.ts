@@ -21,7 +21,11 @@ const schema = a.schema({
        isAvailable: a.boolean().default(true), // New field added
  
      })
-     .authorization((allow) => [allow.guest()]),
+   //  .authorization((allow) => [ allow.authenticated().to(["create", "read", "update", "delete"]), 
+        //                allow.guest().to(["read","create","update"])],), 
+         .authorization((allow) => [allow.publicApiKey(),
+          allow.guest().to(["read"])
+         ]),
   SendEmail: a
     .query()
     .arguments({
@@ -34,7 +38,7 @@ const schema = a.schema({
 
     })
     .returns(a.string())
-    .authorization(allow => [allow.guest()])
+    .authorization(allow => [allow.guest(), allow.publicApiKey()]) // Allow public API key access
     .handler(a.handler.function(sendEmail)),
 });
 
@@ -46,9 +50,17 @@ export type Schema = ClientSchema<typeof schema>;
 
 export const data = defineData({
   schema,
-  authorizationModes: {
-    defaultAuthorizationMode: 'identityPool',
-  },
+ authorizationModes: {
+ // defaultAuthorizationMode: 'userPool', 
+     defaultAuthorizationMode: "apiKey",
+    // API Key is used for a.allow.public() rules
+    apiKeyAuthorizationMode: {
+      expiresInDays: 30,
+    },
+
+
+ },
+  
  
 });
 
