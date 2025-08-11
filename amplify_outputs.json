@@ -28,9 +28,11 @@
   "data": {
     "url": "https://ny6sjkictnff5aw2aohabcnjv4.appsync-api.us-east-1.amazonaws.com/graphql",
     "aws_region": "us-east-1",
-    "default_authorization_type": "AWS_IAM",
+    "api_key": "da2-23c56kyh2vbllipdh3lgull4yq",
+    "default_authorization_type": "API_KEY",
     "authorization_types": [
-      "AMAZON_COGNITO_USER_POOLS"
+      "AMAZON_COGNITO_USER_POOLS",
+      "AWS_IAM"
     ],
     "model_introspection": {
       "version": 1,
@@ -123,11 +125,18 @@
                 "rules": [
                   {
                     "allow": "public",
-                    "provider": "iam",
+                    "provider": "apiKey",
                     "operations": [
                       "create",
                       "update",
                       "delete",
+                      "read"
+                    ]
+                  },
+                  {
+                    "allow": "public",
+                    "provider": "iam",
+                    "operations": [
                       "read"
                     ]
                   }
@@ -153,6 +162,12 @@
           "arguments": {
             "name": {
               "name": "name",
+              "isArray": false,
+              "type": "String",
+              "isRequired": true
+            },
+            "email": {
+              "name": "email",
               "isArray": false,
               "type": "String",
               "isRequired": true
@@ -199,10 +214,8 @@
             "guest": [
               "get",
               "list"
-            ]
-          },
-          "profile-pictures/${cognito-identity.amazonaws.com:sub}/*": {
-            "entityidentity": [
+            ],
+            "authenticated": [
               "get",
               "list",
               "write",

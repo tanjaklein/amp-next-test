@@ -8,6 +8,7 @@ import Link from 'next/link';
 
 import MainHeaderBackground from './main-header-background';
 import logoImg from '@/assets/logo.png';
+import bgImage from '@/assets/dumplings.jpg';
 import classes from './main-header.module.css';
 import NavLink from './nav-link';
 
@@ -17,17 +18,18 @@ export default function MainHeader() {
   return (
     <>
   
-    <MainHeaderBackground />
+  
 
     <View
     as="span"
-     backgroundColor={tokens.colors.green[40]}
-     
-      
-      padding={tokens.space.medium}
+    
     >
       <Card >
-        <Flex direction="row" justifyContent="space-between" >
+        <Flex direction="row" justifyContent="space-between" 
+            backgroundImage={`url(${bgImage.src})`} 
+          
+         
+       >
           
          <Flex direction="row" alignItems="flex-start" opacity={10}>
                  
@@ -35,8 +37,13 @@ export default function MainHeader() {
           <Heading
   width='30vw'
   level={3} 
+  alignItems="center"
+  justifyContent="center"
+  
+  color={tokens.colors.white}
+  fontSize="2rem"
 >
-   Nextlevel Art
+   Next level Art
 </Heading>
                       
           

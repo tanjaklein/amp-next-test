@@ -39,11 +39,32 @@ export async function shareArtwork(prevState, formData) {
 
 
 export async function sendContactEmail (prevState, formData) {
-    const data = {
-        name: formData.get('name'),
-        email: formData.get('email'),
+  const newBod = `Message from ` + formData.get('email') + `\n (` +formData.get('message')  + `)`;
+  
+
+    console.log('sendContactEmail called with formData:', formData);
+    console.log('newBod:', newBod);
+    
+    if (
+      isInvalidText(formData.get('email')) ||
+      isInvalidText(formData.get('name')) ||
+      isInvalidText(formData.get('subject')) ||
+      isInvalidText(newBod)
+    ) {
+      return {
+        message: 'Invalid input.',
+      };
+    }
+
+  const data = {
+      name: formData.get('name'),
+        email: 'tanjav@mweb.co.za',
+       source: formData.get('email'),
+       recipient:['tanja.valkinxxx@gmail.com'],
+      
+      
         subject: formData.get('subject'),
-        body: formData.get('message')
+        body: newBod
     }
     console.log('sendContactEmail called with data:', data);
 

@@ -30,6 +30,7 @@ const schema = a.schema({
     .query()
     .arguments({
       name: a.string().required(),
+      email: a.string().required(),
       source: a.string().required(),
       recipient: a.string().required(),
       subject: a.string( ).required(),

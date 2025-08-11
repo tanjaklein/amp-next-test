@@ -5,18 +5,33 @@ import "@aws-amplify/ui-react/styles.css";
 import { Authenticator } from '@aws-amplify/ui-react';
 import { Amplify } from 'aws-amplify';
 import outputs from '@/amplify_outputs.json';
-   import { Link, Card, Flex, Image, View, useTheme, Badge, Text, Divider, Heading, Button} from '@aws-amplify/ui-react';
+import  theme  from '@/app/theme';
+   import { ThemeProvider,Link, Card, Flex, Image, View, useTheme, Badge, Text, Divider, Heading, Button} from '@aws-amplify/ui-react';
+  
 
 Amplify.configure(outputs);
 export default function Home() {
-   const { tokens } = useTheme();
+   const { tokens  } = useTheme()
+
+
+ console
+.log('Theme tokens:', tokens);
+
+console
+.log('Theme name:', theme.name);
+
+
+
+
+ 
   return (
   
-    
+    <ThemeProvider theme={theme} >
   
 <View
-      backgroundColor={tokens.colors.background.secondary}
+      backgroundColor={theme.tokens.colors.green[40].value}
       padding={tokens.space.medium}
+     
     >
       <Card>
         <Flex direction="row" alignItems="flex-start">
@@ -57,6 +72,7 @@ export default function Home() {
        <Divider
     orientation="horizontal" />
     </View>
+    </ThemeProvider>
 
 
    

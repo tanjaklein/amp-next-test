@@ -139,6 +139,7 @@ export async function saveArt(artwork:any) {
     
     const response =  await client.queries.SendEmail({
       name: data.name,
+      email: data.email,
       source: "tanjav@mweb.co.za",
       recipient: data.email,
       body: data.body,

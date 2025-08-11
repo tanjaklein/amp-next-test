@@ -12,7 +12,8 @@ import   ArtsGrid   from "../../components/artimage/art-grid";
 
 
 import outputs from "@/amplify_outputs.json"; // Import the Amplify outputs file
-import { View } from "@aws-amplify/ui-react";
+import { ThemeProvider, View } from "@aws-amplify/ui-react";
+import theme from "@/app/theme"; // Import your custom theme
 
 Amplify.configure(outputs)
 
@@ -65,7 +66,7 @@ export  function Gallery () {
   return(
     <>
   
-  
+  <ThemeProvider theme={theme} >
    <View as='div'>
      
      <ArtsGrid arts={arts} />
@@ -74,6 +75,7 @@ export  function Gallery () {
      </View>
     
 
+</ThemeProvider>
      
    </>
   )

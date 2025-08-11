@@ -1,11 +1,12 @@
 'use client';
 
 
-import {View, Button, Flex, Input, Label, Divider, TextAreaField, useTheme, Text } from '@aws-amplify/ui-react';
+import {ThemeProvider, View, Button, Flex, Input, Label, Divider, TextAreaField, useTheme, Text } from '@aws-amplify/ui-react';
 
 
 import { sendContactEmail } from '@/utils/actions';
 import { useActionState } from "react";
+   import theme from '@/app/theme';
 
 
 
@@ -18,7 +19,9 @@ export  function ContactPage () {
 
    return (
     <>
-     <View
+    <ThemeProvider theme={theme}>
+    <View
+     
       as="div"
   ariaLabel="View Contact form"
   backgroundColor="var(--amplify-colors-white)"
@@ -84,6 +87,7 @@ export  function ContactPage () {
             </Flex>
    
     </View>
+    </ThemeProvider>
     
     </>
    )

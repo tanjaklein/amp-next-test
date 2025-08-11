@@ -4,7 +4,8 @@
 import { getArtwork } from '@/utils/serveractions';
 import React, { useState, useEffect, use } from 'react';
 
-   import { Link, Card, Flex, Image, View, useTheme, Badge, Text, Divider, Heading} from '@aws-amplify/ui-react';
+   import { ThemeProvider, Link, Card, Flex, Image, View, useTheme, Badge, Text, Divider, Heading} from '@aws-amplify/ui-react';
+   import theme from '@/app/theme';
     
 
 
@@ -115,6 +116,7 @@ try {
 
      
   return (
+      <ThemeProvider theme={theme} >
     <View
           backgroundColor={tokens.colors.background.secondary}
           padding={tokens.space.small}
@@ -162,6 +164,7 @@ try {
            <Divider
         orientation="horizontal" />
         </View>
+        </ThemeProvider>
     
     
     /*
