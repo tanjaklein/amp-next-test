@@ -1,9 +1,9 @@
 {
   "auth": {
-    "user_pool_id": "us-east-1_pRLtWcxmI",
+    "user_pool_id": "us-east-1_ucYXU6DrK",
     "aws_region": "us-east-1",
-    "user_pool_client_id": "16fcatn0tg9uk56s89sqhq262o",
-    "identity_pool_id": "us-east-1:a37b776f-808b-42a4-bb98-f360b579ca06",
+    "user_pool_client_id": "2jnkjfj0dcn6dvq2rce1dr7uvu",
+    "identity_pool_id": "us-east-1:030bcc5f-3222-4267-a6f6-d141aac0e894",
     "mfa_methods": [],
     "standard_required_attributes": [
       "email"
@@ -26,9 +26,9 @@
     "unauthenticated_identities_enabled": true
   },
   "data": {
-    "url": "https://ny6sjkictnff5aw2aohabcnjv4.appsync-api.us-east-1.amazonaws.com/graphql",
+    "url": "https://jkjmmj5p2jembhspey3f7c5nwm.appsync-api.us-east-1.amazonaws.com/graphql",
     "aws_region": "us-east-1",
-    "api_key": "da2-23c56kyh2vbllipdh3lgull4yq",
+    "api_key": "da2-k2fntryi2fdyhhg5e7hznsy424",
     "default_authorization_type": "API_KEY",
     "authorization_types": [
       "AMAZON_COGNITO_USER_POOLS",
@@ -203,11 +203,11 @@
   },
   "storage": {
     "aws_region": "us-east-1",
-    "bucket_name": "amplify-ampnexttest-tanja-allisonartimages1234567b-cj0ifufnkrrp",
+    "bucket_name": "amplify-ampnexttest-tanja-allisonartimages1234567b-g8suoyaiduo7",
     "buckets": [
       {
         "name": "allisonartimages1234567",
-        "bucket_name": "amplify-ampnexttest-tanja-allisonartimages1234567b-cj0ifufnkrrp",
+        "bucket_name": "amplify-ampnexttest-tanja-allisonartimages1234567b-g8suoyaiduo7",
         "aws_region": "us-east-1",
         "paths": {
           "profile-pictures/*": {

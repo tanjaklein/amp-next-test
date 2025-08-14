@@ -18,8 +18,14 @@ Amplify.configure(outputs);
 const client = generateClient<Schema>() ;// use this Data client for CRUDL requests
 
 
-export async function getArtwork (slug: any) {
+export async function getArtwork (slug: string) {
+
+  
+
   console.log('getArtwork called with slug:', slug);
+
+  
+
   const { data: artworks, errors}  = await client.models.Artwork.list({
     filter: {
       slug: {eq: slug}
@@ -43,8 +49,20 @@ export async function getArtwork (slug: any) {
 }
 export async function getArtworks () {
   console.log('getArtworks called');
-  const artworks = await client.models.Artwork.list();
+   const { data: artworks, errors} = await client.models.Artwork.list();
   console.log('getArtworks returned:', artworks);
+  await Promise.all(
+        artworks.map(async (art) => {
+          if (art.image) {
+            const linkToStorageFile = await getUrl({
+              path: `picture-submissions/${art.image}`,
+            });
+            console.log(linkToStorageFile.url);
+            art.image = linkToStorageFile.url.href;
+          }
+          return art;
+        })
+      );
   return artworks;
 } 
 

@@ -17,10 +17,11 @@ export default function NavLink({ href, children }) {
     
     <Link
       href={href}
+      fontWeight={"bold"}
       color={
         path===href // if not the current path
-          ? tokens.colors.primary['80']
-          : tokens.colors.neutral['80']
+          ? "#bed1eeff" // use the primary color
+          : "#da227eff" 
          
       }
     >

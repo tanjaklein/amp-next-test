@@ -45,21 +45,17 @@ console
             alignItems="flex-start"
             gap={tokens.space.xs}
           >
-            <Flex>
-              <Badge size="small" variation="info">
-                Plus
-              </Badge>
-              <Badge size="small" variation="success">
-                Verified
-              </Badge>
-            </Flex>
-
+           
             <Heading level={5}>
-             Join our community and share your favorite recipes!
+             Allison Artist extraordinaire!
             </Heading>
 
             <Text as="span">
-              Find new friends & like-minded people
+             Bold, expressive, and unapologetically original, Allison is a Johannesburg-based printmaker whose work pulses with individuality and depth. <br /><br />At 50, she brings decades of lived experience into every piece, transforming traditional printing techniques into vibrant narratives of identity, emotion, and place.
+
+With her signature red hair and unmistakable style, she’s as much a visual force as the art she creates. <br /><br />Her studio is a sanctuary of ink, texture, and experimentation—where linocuts, monoprints, and etchings evolve into layered reflections of the world around her. Her work often explores themes of transformation, memory, and the interplay between chaos and control.
+
+<br /><br />A fixture in South Africa’s contemporary art scene, Allison has exhibited in local galleries and collaborated with fellow artists across disciplines. Her prints are collected by those who seek not just beauty, but boldness—art that speaks with a voice as distinct as the woman behind it.
             </Text>
               <Link  href="/gallery" 
               color="#4177c9ff">
