@@ -12,9 +12,7 @@ export default function NavLink({ href, children }) {
    
 
   return (
-
-    
-    
+   
     <Link
       href={href}
       fontWeight={"bold"}
