@@ -21,7 +21,7 @@ export default function NavLink({ href, children }) {
       color={
         path===href // if not the current path
           ? "#bed1eeff" // use the primary color
-          : "#da227eff" 
+          : "#bfd121ff" 
          
       }
     >

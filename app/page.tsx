@@ -1,5 +1,5 @@
 'use client';
-import schnitzel from '@/assets/schnitzel.jpg';
+import schnitzel from '@/assets/profile-pic.png';
 
 import "@aws-amplify/ui-react/styles.css";
 import { Authenticator } from '@aws-amplify/ui-react';

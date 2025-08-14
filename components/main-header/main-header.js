@@ -7,8 +7,8 @@ import "@aws-amplify/ui-react/styles.css";
 import Link from 'next/link';
 
 import MainHeaderBackground from './main-header-background';
-import logoImg from '@/assets/logo.png';
-import bgImage from '@/assets/dumplings.jpg';
+import logoImg from '@/assets/urban.png';
+import bgImage from '@/assets/delta1.png';
 import classes from './main-header.module.css';
 import NavLink from './nav-link';
 
