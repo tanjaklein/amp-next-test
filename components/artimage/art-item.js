@@ -54,7 +54,7 @@ export default function ArtItem({ name, slug, image, description, price, isAvail
                     <Link href={`/gallery/${slug}`}
                     >
                       <Text color={tokens.colors.primary['80']}
-                      textDecoration="bold">View Details</Text></Link>
+                      textDecoration="bold" fontSize={20}>View Details</Text></Link>
               </Flex>
             </Flex>
     

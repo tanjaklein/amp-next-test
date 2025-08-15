@@ -13,12 +13,14 @@ export default function ArtDetails({ artItem }) {
   //console.log('222ArtItem image:', xxx.url);
 
   const { tokens } = useTheme();
+  console.log('colour:'+ tokens.colors.green['80']);
+  console.log('colour:'+ tokens.colors.red[80]);
 
   return (
   
      <ThemeProvider theme={theme} >
         <View
-              backgroundColor={tokens.colors.background.secondary}
+              backgroundColor={tokens.colors.red[10]}
               padding={tokens.space.small}
             >
               <Card>
@@ -55,8 +57,9 @@ export default function ArtDetails({ artItem }) {
                        Created At: {artItem?.createdAt}
                     </Text>
                       <Link  href="/contact" 
-                      color={tokens.colors.font.teal}>
-                        Send an Email</Link>
+                     >
+                        <Text color={tokens.colors.primary['80']}
+                      textDecoration="bold" fontSize={20}>Send an Email</Text></Link>
                   </Flex>
                 </Flex>
         

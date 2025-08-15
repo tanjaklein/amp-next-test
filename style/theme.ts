@@ -3,7 +3,7 @@ import { defaultDarkModeOverride } from '@aws-amplify/ui-react';
 const theme = {
   name: 'terminal',
   primaryColor: 'green',
-  secondaryColor: 'green',
+  secondaryColor: 'red',
   tokens: {
     colors: {
       green: {
@@ -12,8 +12,17 @@ const theme = {
         40: { value: '#4CCB68' },
         60: { value: '#44AF5B' },
         80: { value: '#31703D' },
-        90: { value: '#224226' },
-        100: { value: '#013D09' },
+        90: { value: '#386d3fff' },
+        100: { value: '#026810ff' },
+      },
+      red: {
+        10: { value: '#efcdc7ff' },
+        20: { value: '#e2b79aff' },
+        40: { value: '#cb654cff' },
+        60: { value: '#b34f3eff' },
+        80: { value: '#704031ff' },
+        90: { value: '#9e2a0dff' },
+        100: { value: '#a03503ff' },
       },
       border: {
         primary: { value: 'black' },
@@ -70,6 +79,17 @@ const theme = {
           backgroundColor: { value: '{colors.primary.40.value}' },
           color: { value: '{colors.font.primary.value}' },
           borderColor: { value: '{colors.border.primary.value}' },
+        },
+      },
+      link: {
+        focus: {
+          color: { value: '{colors.blue.40}' },
+        },
+        hover: {
+          color: { value: '{colors.blue.60}' },
+        },
+        visited: {
+          color: { value: '{colors.blue.80}' },
         },
       },
     },
