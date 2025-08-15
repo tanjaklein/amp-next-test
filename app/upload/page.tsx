@@ -6,7 +6,7 @@ import { useActionState } from "react";
 import { Amplify } from 'aws-amplify';
 import outputs from '@/amplify_outputs.json';
 import { View, CheckboxField,Flex, Input, Label, Button, TextAreaField, useTheme, Text, Authenticator, ThemeProvider } from '@aws-amplify/ui-react';
-import theme from '@/app/theme';
+import theme from '@/style/theme';
 
 
 

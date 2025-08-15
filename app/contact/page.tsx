@@ -6,7 +6,7 @@ import {ThemeProvider, View, Button, Flex, Input, Label, Divider, TextAreaField,
 
 import { sendContactEmail } from '@/utils/actions';
 import { useActionState } from "react";
-   import theme from '@/app/theme';
+ import theme from '@/style/theme';
 
 
 

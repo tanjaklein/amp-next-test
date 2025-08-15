@@ -48,16 +48,17 @@ export async function getArtwork (slug: string) {
   return artworks;
 }
 export async function getArtworks () {
-  console.log('getArtworks called');
+  console.log('XXXXXXXXXXXXXXXXXXXXXX getArtworks called');
    const { data: artworks, errors} = await client.models.Artwork.list();
   console.log('getArtworks returned:', artworks);
   await Promise.all(
         artworks.map(async (art) => {
+            console.log("YYYYYYYYYYYYYYYYY  Tyu Image");
           if (art.image) {
             const linkToStorageFile = await getUrl({
               path: `picture-submissions/${art.image}`,
             });
-            console.log(linkToStorageFile.url);
+            console.log("YYYYYYYYYYYYYYYYY Image" + linkToStorageFile.url);
             art.image = linkToStorageFile.url.href;
           }
           return art;

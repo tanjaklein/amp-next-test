@@ -9,15 +9,14 @@ import classes from './page.module.css';
 import   ArtsGrid   from "../../components/artimage/art-grid";
 
 
-import outputs from "@/amplify_outputs.json"; // Import the Amplify outputs file
 import { getArtworks } from "@/utils/serveractions";
 
-Amplify.configure(outputs)
+
 
 
 
 async function Artwork() {
-  console.log('Fetching meals');
+  console.log('Fetching artworks...');
   const arts = await getArtworks();
 
   return <ArtsGrid arts={arts} />;

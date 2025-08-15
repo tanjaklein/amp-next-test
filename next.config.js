@@ -6,7 +6,7 @@
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'amplify-ampnexttest-tanja-allisonartimages1234567b-cj0ifufnkrrp.s3.us-east-1.amazonaws.com',
+        hostname: 'amplify-ampnexttest-tanja-allisonartimages1234567b-g8suoyaiduo7.s3.us-east-1.amazonaws.com',
         port: '',
         pathname: '/**',
       },

@@ -5,7 +5,7 @@ import "@aws-amplify/ui-react/styles.css";
 import { Authenticator } from '@aws-amplify/ui-react';
 import { Amplify } from 'aws-amplify';
 import outputs from '@/amplify_outputs.json';
-import  theme  from '@/app/theme';
+import theme from '@/style/theme';
    import { ThemeProvider,Link, Card, Flex, Image, View, useTheme, Badge, Text, Divider, Heading, Button} from '@aws-amplify/ui-react';
   
 

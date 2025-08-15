@@ -2,7 +2,7 @@
 import Link from 'next/link';
 
 import {Image, Heading,Card, Flex, Badge, View, useTheme, Text, ThemeProvider, Divider} from '@aws-amplify/ui-react';
-  import theme from '@/app/theme';
+import theme from '@/style/theme';
 
 
 
