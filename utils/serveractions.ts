@@ -55,11 +55,16 @@ export async function getArtworks () {
         artworks.map(async (art) => {
             console.log("YYYYYYYYYYYYYYYYY  Tyu Image");
           if (art.image) {
+            try {
             const linkToStorageFile = await getUrl({
               path: `picture-submissions/${art.image}`,
             });
             console.log("YYYYYYYYYYYYYYYYY Image" + linkToStorageFile.url);
             art.image = linkToStorageFile.url.href;
+          }
+          catch (error) {
+            console.error('Error fetching image URL:', error);
+          }
           }
           return art;
         })
