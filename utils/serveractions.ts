@@ -7,6 +7,8 @@ import type { Schema } from "../amplify/data/resource";
 import { generateClient } from "aws-amplify/data";
 import { Amplify } from "aws-amplify";
 import { list,uploadData, getUrl, downloadData } from "aws-amplify/storage";
+import { runWithAmplifyServerContext } from '@/utils/amplifyServerUtils';
+
 
 
 import outputs from "@/amplify_outputs.json"; // Import the Amplify outputs file
@@ -16,6 +18,7 @@ Amplify.configure(outputs);
 
 
 const client = generateClient<Schema>() ;// use this Data client for CRUDL requests
+
 
 
 export async function getArtwork (slug: string) {
@@ -47,6 +50,7 @@ export async function getArtwork (slug: string) {
   console.log('getArtwork returned:', artworks);
   return artworks;
 }
+
 export async function getArtworks () {
   console.log('XXXXXXXXXXXXXXXXXXXXXX getArtworks called');
    const { data: artworks, errors} = await client.models.Artwork.list();
@@ -71,6 +75,11 @@ export async function getArtworks () {
       );
   return artworks;
 } 
+
+
+
+
+
 
 export async function saveArt(artwork:any) {
   console.log ('saveArt called with meal:', artwork);
